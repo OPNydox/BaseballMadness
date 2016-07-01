@@ -1,8 +1,5 @@
 package Models;
 
-/**
- * Created by User on 1.7.2016 ã..
- */
 public abstract class AbstractBall implements Ball {
     private int ballX;
     private int ballY;
