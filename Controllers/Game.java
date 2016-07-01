@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.Ball;
+import Models.CurveBall;
 import Models.KnuckleBall;
 import Models.StraightBall;
 import Utils.Constants;
