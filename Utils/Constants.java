@@ -21,5 +21,5 @@ public class Constants {
 
     public static String title = "Baseball Madness";
 
-    public static String ballSpritePath = "Resources/ballSprite.png";
+    public static String ballSpritePath = "src/Resources/ballSprite.png";
 }
