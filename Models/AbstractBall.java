@@ -9,11 +9,11 @@ public abstract class AbstractBall implements Ball {
     private int ballRadius;
     private int ballSpeed;
 
-    public AbstractBall(int ballX, int ballY, int ballRadius, int ballSpeed) {
-        this.ballX = ballX;
-        this.ballY = ballY;
-        this.ballRadius = ballRadius;
-        this.ballSpeed = ballSpeed;
+    protected AbstractBall(int ballX, int ballY, int ballRadius, int ballSpeed) {
+        setBallX(ballX);
+        setBallY(ballY);
+        setRadius(ballRadius);
+        setBallSpeed(ballSpeed);
     }
 
     @Override
@@ -34,33 +34,30 @@ public abstract class AbstractBall implements Ball {
         return ballRadius;
     }
 
-    @Override
-    public int getBallSpeed() {
-        return ballSpeed;
-    }
+    protected int getBallSpeed(){ return ballSpeed; }
 
-    private void setX(int ballX){
+    protected void setBallX(int ballX){
         if (ballX < 0){
             throw new IllegalArgumentException("The X coordinate on the ball cannot be below zero");
         }
         this.ballX = ballX;
     }
 
-    private void setBallY(int ballY){
+    protected void setBallY(int ballY){
         if (ballY < 0){
             throw new IllegalArgumentException("The X coordinate on the ball cannot be below zero");
         }
         this.ballY = ballY;
     }
 
-    private void setRadius(int ballRadius){
+    protected void setRadius(int ballRadius){
         if (ballY <= 0){
             throw new IllegalArgumentException("The ball radius cannot be below or equal to zero");
         }
         this.ballRadius = ballRadius;
     }
 
-    private void setBallSpeed(int ballSpeed){
+    protected void setBallSpeed(int ballSpeed){
         if (ballY <= 0) {
             throw new IllegalArgumentException("The speed of the ball cannot be below or equal to zero");
         }

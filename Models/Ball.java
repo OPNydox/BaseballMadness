@@ -8,5 +8,4 @@ public interface Ball {
     int getX();
     int getY();
     int getRadius();
-    int getBallSpeed();
 }
