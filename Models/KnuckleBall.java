@@ -3,13 +3,13 @@ package Models;
 import java.util.Random;
 
 /**
- * Created by User on 1.7.2016 ã..
+ * Created by User on 1.7.2016 ï¿½..
  */
 public class KnuckleBall extends AbstractBall {
     private Random random;
 
-    public KnuckleBall(int ballX, int ballY, int ballRadius, int ballSpeed) {
-        super(ballX, ballY, ballRadius, ballSpeed);
+    public KnuckleBall(int ballX, int ballY, int ballRadius, int ballSpeed, String ballSpritePath) {
+        super(ballX, ballY, ballRadius, ballSpeed, ballSpritePath);
         random = new Random();
     }
 

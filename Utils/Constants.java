@@ -17,7 +17,9 @@ public class Constants {
 
     public static int startingDelayBetweenShots = 180;
 
-    public static int ballRadius = 40;
+    public static int ballRadius = 20;
 
     public static String title = "Baseball Madness";
+
+    public static String ballSpritePath = "Resources/ballSprite.png";
 }
