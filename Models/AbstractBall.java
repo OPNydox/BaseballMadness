@@ -35,14 +35,14 @@ public abstract class AbstractBall implements Ball {
 
     protected void setBallX(int ballX){
         if (ballX < 0){
-            throw new IllegalArgumentException("The X coordinate on the ball cannot be below zero");
+        //    throw new IllegalArgumentException("The X coordinate on the ball cannot be below zero");
         }
         this.ballX = ballX;
     }
 
     protected void setBallY(int ballY){
         if (ballY < 0){
-            throw new IllegalArgumentException("The X coordinate on the ball cannot be below zero");
+        //    throw new IllegalArgumentException("The Y coordinate on the ball cannot be below zero");
         }
         this.ballY = ballY;
     }
