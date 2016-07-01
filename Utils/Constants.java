@@ -8,6 +8,8 @@ public class Constants {
             {100, 500}, {200, 500}, {200, 400}, {100, 400}
     };
 
+    public static int[] playerDimensions = {100,250};
+
     public static int boundaryForMiss = 500;
 
     public static int pitcherX = windowWidth/2, pitcherY = 20;
@@ -22,4 +24,5 @@ public class Constants {
     public static String title = "Baseball Madness";
 
     public static String ballSpritePath = "src/Resources/ballSprite.png";
+    public static String playerSpritePath = "src/Resources/playerSpriteSheet.png";
 }

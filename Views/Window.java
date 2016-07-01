@@ -7,9 +7,7 @@ import javafx.scene.input.KeyCode;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -21,21 +19,31 @@ public class Window extends JFrame {
 
         DrawingPanel drawingPanel = new DrawingPanel(game);
 
-        drawingPanel.addKeyListener(new KeyListener() {
+        drawingPanel.addMouseListener(new MouseListener() {
             @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            public void mouseClicked(MouseEvent e) {
+                if(e.getButton() == 1){
                     game.hitBall();
                 }
             }
 
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void mousePressed(MouseEvent e) {
 
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
 
             }
         });

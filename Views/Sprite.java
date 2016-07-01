@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Sprite {
-    private BufferedImage[] frames;
+    protected BufferedImage[] frames;
     private int timer, numberOfFrames;
 
     public Sprite(String spritePath, int numberOfFrames){

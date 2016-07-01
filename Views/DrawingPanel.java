@@ -15,19 +15,18 @@ import java.util.List;
 
 public class DrawingPanel extends JComponent {
     private List<Ball> ballsInPlay;
-    private BufferedImage ballSprite, playerSprite_0, playerSprite_1, playerSprite_2, background;
+    private PlayerSprite playerSprite;
+    private BufferedImage background;
 
     public DrawingPanel(Game game){
         ballsInPlay = game.ballsInPlay;
+        playerSprite = game.playerSprite;
         loadResources();
     }
 
     private void loadResources() {
         //todo: load the res
         try{
-            playerSprite_0 = ImageIO.read(new File("src/Resources/sprite_0.png"));
-            playerSprite_0 = ImageIO.read(new File("src/Resources/sprite_1.png"));
-            playerSprite_0 = ImageIO.read(new File("src/Resources/sprite_2.png"));
             background = ImageIO.read(new File("src/Resources/background.png"));
         } catch (IOException ioExc){
             ioExc.printStackTrace();
@@ -43,5 +42,7 @@ public class DrawingPanel extends JComponent {
         for (Ball ball : ballsInPlay) {
             graphics.drawImage(ball.getImage(), ball.getX(), ball.getY(), ball.getRadius(), ball.getRadius(), this);
         }
+        graphics.drawImage(playerSprite.getImage(), Constants.playerHitbox[3][0], Constants.playerHitbox[3][1],
+                Constants.playerDimensions[0], Constants.playerDimensions[0], this);
     }
 }

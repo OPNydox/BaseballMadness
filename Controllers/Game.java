@@ -5,6 +5,7 @@ import Models.CurveBall;
 import Models.KnuckleBall;
 import Models.StraightBall;
 import Utils.Constants;
+import Views.PlayerSprite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class Game {
     public boolean inMenu, gameOver;
     public int currentLives;
     public int score;
+    public PlayerSprite playerSprite;
 
     private int timer;
     private int delayBetweenShots;
@@ -26,6 +28,8 @@ public class Game {
         gameOver = false;
         currentLives = Constants.startingLives;
         score = 0;
+        playerSprite = new PlayerSprite();
+
         timer = 0;
         delayBetweenShots = Constants.startingDelayBetweenShots;
         random = new Random();
@@ -46,6 +50,7 @@ public class Game {
     }
 
     public void hitBall(){
+        playerSprite.playAnimation();
         for (int i = 0; i < ballsInPlay.size(); i++) {
             Ball currentBall = ballsInPlay.get(i);
             if(pointIsInsideRect(new int[] {currentBall.getX(), currentBall.getY()}, Constants.playerHitbox)){
