@@ -37,6 +37,11 @@ public class Game {
             updateBalls();
             checkForMissedBalls();
             timer++;
+            try{
+                Thread.sleep(15);
+            } catch (InterruptedException ie){
+                ie.printStackTrace();
+            }
         }
     }
 
@@ -62,23 +67,20 @@ public class Game {
 
     private void shootBall() {
         if(timer % delayBetweenShots == 0){
-            int ballType = random.nextInt(4);
+            int ballType = random.nextInt(3); //CHANGE TO 4 to implement danger ball
             Ball ball = null;
             switch(ballType) {
                 case 0:
                     ball = new StraightBall(Constants.pitcherX, Constants.pitcherY,
-                            Constants.ballRadius, random.nextInt(25) + 40);
+                            Constants.ballRadius, random.nextInt(7) + 10);
                     break;
                 case 1:
                     ball = new KnuckleBall(Constants.pitcherX, Constants.pitcherY,
-                            Constants.ballRadius, random.nextInt(25) + 20);
+                            Constants.ballRadius, random.nextInt(7) + 5);
                     break;
                 case 2:
                     ball = new CurveBall(Constants.pitcherX, Constants.pitcherY,
-                            Constants.ballRadius, random.nextInt(25) + 20);
-                    break;
-                case 3:
-                    //todo implement danger ball
+                            Constants.ballRadius, random.nextInt(7) + 5);
                     break;
             }
             ballsInPlay.add(ball);
@@ -86,7 +88,9 @@ public class Game {
     }
 
     private void updateBalls() {
-        ballsInPlay.forEach(b -> b.move());
+        for (int i = 0; i < ballsInPlay.size(); i++) {
+            ballsInPlay.get(i).move();
+        }
     }
 
     private void checkForMissedBalls() {

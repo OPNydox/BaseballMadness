@@ -2,10 +2,10 @@ package Utils;
 
 public class Constants {
     public static int windowHeight = 600;
-    public static int windowWidth = 200;
+    public static int windowWidth = 300;
 
     public static int[][] playerHitbox = {
-            {250, 500}, {350, 500}, {350, 400}, {250, 400}
+            {100, 500}, {200, 500}, {200, 400}, {100, 400}
     };
 
     public static int boundaryForMiss = 500;
@@ -17,5 +17,7 @@ public class Constants {
 
     public static int startingDelayBetweenShots = 180;
 
-    public static int ballRadius = 10;
+    public static int ballRadius = 40;
+
+    public static String title = "Baseball Madness";
 }
