@@ -72,15 +72,15 @@ public class Game {
             switch(ballType) {
                 case 0:
                     ball = new StraightBall(Constants.pitcherX, Constants.pitcherY,
-                            Constants.ballRadius, random.nextInt(7) + 10);
+                            Constants.ballRadius, random.nextInt(7) + 10, Constants.ballSpritePath);
                     break;
                 case 1:
                     ball = new KnuckleBall(Constants.pitcherX, Constants.pitcherY,
-                            Constants.ballRadius, random.nextInt(7) + 5);
+                            Constants.ballRadius, random.nextInt(7) + 5, Constants.ballSpritePath);
                     break;
                 case 2:
                     ball = new CurveBall(Constants.pitcherX, Constants.pitcherY,
-                            Constants.ballRadius, random.nextInt(7) + 5);
+                            Constants.ballRadius, random.nextInt(7) + 5, Constants.ballSpritePath);
                     break;
             }
             ballsInPlay.add(ball);

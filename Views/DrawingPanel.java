@@ -25,12 +25,10 @@ public class DrawingPanel extends JComponent {
     private void loadResources() {
         //todo: load the res
         try{
-            background = ImageIO.read(new File("src\\Resources\\background.png"));
-            ballSprite = ImageIO.read(new File("Resources/ballSprite.png"));
             playerSprite_0 = ImageIO.read(new File("Resources/sprite_0.png"));
             playerSprite_0 = ImageIO.read(new File("Resources/sprite_1.png"));
             playerSprite_0 = ImageIO.read(new File("Resources/sprite_2.png"));
-
+            background = ImageIO.read(new File("Resources/background.png"));
         } catch (IOException ioExc){
             ioExc.printStackTrace();
         }
@@ -43,7 +41,7 @@ public class DrawingPanel extends JComponent {
 
         graphics.drawImage(background,0,0, Constants.windowWidth, Constants.windowHeight, this);
         for (Ball ball : ballsInPlay) {
-            graphics.fillOval(ball.getX(), ball.getY(), ball.getRadius(), ball.getRadius());
+            graphics.drawImage(ball.getImage(), ball.getX(), ball.getY(), ball.getRadius(), ball.getRadius(), this);
         }
     }
 }
