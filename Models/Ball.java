@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
  */
 public interface Ball {
     void move();
+    void hitBall();
+    boolean isHit();
     int getX();
     int getY();
     int getRadius();

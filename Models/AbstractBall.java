@@ -9,6 +9,7 @@ public abstract class AbstractBall implements Ball {
     private int ballY;
     private int ballRadius;
     private int ballSpeed;
+    private boolean isHit;
     private Sprite sprite;
 
     protected AbstractBall(int ballX, int ballY, int ballRadius, int ballSpeed, String spritePath) {
@@ -16,11 +17,27 @@ public abstract class AbstractBall implements Ball {
         setBallY(ballY);
         setRadius(ballRadius);
         setBallSpeed(ballSpeed);
+        isHit = false;
         sprite = new Sprite(spritePath, 7);
     }
 
     @Override
-    public abstract void move();
+    public void move(){
+        if(isHit == true){
+            setBallX(getX() + (int)(0.75*ballSpeed));
+            setBallY(getY() - 4*ballSpeed);
+        }
+    }
+
+    @Override
+    public void hitBall(){
+        isHit = true;
+    }
+
+    @Override
+    public boolean isHit(){
+        return isHit;
+    }
 
     @Override
     public int getX() {
@@ -51,9 +68,6 @@ public abstract class AbstractBall implements Ball {
     }
 
     protected void setBallY(int ballY){
-        if (ballY < 0){
-            throw new IllegalArgumentException("The X coordinate on the ball cannot be below zero");
-        }
         this.ballY = ballY;
     }
 

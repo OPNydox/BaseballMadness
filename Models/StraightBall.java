@@ -11,5 +11,6 @@ public class StraightBall extends AbstractBall {
     @Override
     public void move() {
         super.setBallY(getY() + getBallSpeed());
+        super.move();
     }
 }

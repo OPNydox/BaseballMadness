@@ -1,5 +1,7 @@
 package Models;
 
+import Utils.Constants;
+
 import java.util.Random;
 
 /**
@@ -16,5 +18,9 @@ public class KnuckleBall extends AbstractBall {
     @Override
     public void move() {
         setBallY((int)(getBallSpeed() * (random.nextDouble() + 1)) + getY());
+        setBallX(Constants.windowWidth/2);
+        int jitter = random.nextInt(7) - 14;
+        setBallX(getX() + jitter);
+        super.move();
     }
 }

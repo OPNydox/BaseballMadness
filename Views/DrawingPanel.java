@@ -16,20 +16,27 @@ import java.util.List;
 public class DrawingPanel extends JComponent {
     private List<Ball> ballsInPlay;
     private PlayerSprite playerSprite;
+    private Game game;
     private BufferedImage background;
+    private Font font;
 
     public DrawingPanel(Game game){
+        loadResources();
         ballsInPlay = game.ballsInPlay;
         playerSprite = game.playerSprite;
-        loadResources();
+        this.game = game;
+        font = new Font("Symtext", Font.PLAIN, 25);
     }
 
     private void loadResources() {
         //todo: load the res
         try{
             background = ImageIO.read(new File("src/Resources/background.png"));
-        } catch (IOException ioExc){
-            ioExc.printStackTrace();
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("src/Resources/Symtext.ttf")));
+            //font = Font.createFont(Font.PLAIN, new File("src/Resources/Symtext.ttf"));
+        } catch (IOException|FontFormatException exc){
+            exc.printStackTrace();
         }
     }
 
@@ -42,7 +49,13 @@ public class DrawingPanel extends JComponent {
         for (Ball ball : ballsInPlay) {
             graphics.drawImage(ball.getImage(), ball.getX(), ball.getY(), ball.getRadius(), ball.getRadius(), this);
         }
-        graphics.drawImage(playerSprite.getImage(), Constants.playerHitbox[3][0], Constants.playerHitbox[3][1],
+        graphics.drawImage(playerSprite.getImage(), Constants.playerPosition[0], Constants.playerPosition[1],
                 Constants.playerDimensions[0], Constants.playerDimensions[0], this);
+
+        graphics.setFont(font);
+        graphics.setColor(Color.WHITE);
+        graphics.drawString("SCORE: " + game.score, 2, 24);
+
+        Toolkit.getDefaultToolkit().sync();
     }
 }

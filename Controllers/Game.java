@@ -20,6 +20,7 @@ public class Game {
 
     private int timer;
     private int delayBetweenShots;
+    private int baseSpeed;
     private Random random;
 
     public Game(){
@@ -28,6 +29,7 @@ public class Game {
         gameOver = false;
         currentLives = Constants.startingLives;
         score = 0;
+        baseSpeed = 5;
         playerSprite = new PlayerSprite();
 
         timer = 0;
@@ -41,6 +43,12 @@ public class Game {
             updateBalls();
             checkForMissedBalls();
             timer++;
+            if(timer % 30 == 0 && delayBetweenShots > 45){
+                delayBetweenShots--;
+            }
+            if(timer % 60 == 0 && baseSpeed < 8){
+                baseSpeed++;
+            }
             try{
                 Thread.sleep(15);
             } catch (InterruptedException ie){
@@ -56,8 +64,10 @@ public class Game {
             if(pointIsInsideRect(new int[] {currentBall.getX(), currentBall.getY()}, Constants.playerHitbox)){
                 score += Constants.pointsPerHit;
                 //todo implement bounce off
-                ballsInPlay.remove(i);
-                i--;
+                currentBall.hitBall();
+            }
+            else {
+                score -= 111;
             }
         }
     }
@@ -77,15 +87,15 @@ public class Game {
             switch(ballType) {
                 case 0:
                     ball = new StraightBall(Constants.pitcherX, Constants.pitcherY,
-                            Constants.ballRadius, random.nextInt(7) + 10, Constants.ballSpritePath);
+                            Constants.ballRadius, random.nextInt(baseSpeed) + 5, Constants.ballSpritePath);
                     break;
                 case 1:
                     ball = new KnuckleBall(Constants.pitcherX, Constants.pitcherY,
-                            Constants.ballRadius, random.nextInt(7) + 5, Constants.ballSpritePath);
+                            Constants.ballRadius, random.nextInt(baseSpeed) + 4, Constants.ballSpritePath);
                     break;
                 case 2:
                     ball = new CurveBall(Constants.pitcherX, Constants.pitcherY,
-                            Constants.ballRadius, random.nextInt(7) + 5, Constants.ballSpritePath);
+                            Constants.ballRadius, random.nextInt(baseSpeed) + 3, Constants.ballSpritePath);
                     break;
             }
             ballsInPlay.add(ball);
@@ -99,11 +109,20 @@ public class Game {
     }
 
     private void checkForMissedBalls() {
+        boolean removeHappened = false;
         for (int i = 0; i < ballsInPlay.size(); i++) {
             if(ballsInPlay.get(i).getY() > Constants.boundaryForMiss){
                 currentLives--;
+                score -= 750;
+                removeHappened = true;
+            }
+            if(ballsInPlay.get(i).getY() <= 0 && ballsInPlay.get(i).isHit()){
+                removeHappened = true;
+            }
+            if(removeHappened){
                 ballsInPlay.remove(i);
                 i--;
+                removeHappened = false;
             }
         }
     }

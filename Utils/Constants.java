@@ -5,19 +5,21 @@ public class Constants {
     public static int windowWidth = 300;
 
     public static int[][] playerHitbox = {
-            {100, 500}, {200, 500}, {200, 400}, {100, 400}
+            {75, 525}, {225, 525}, {225, 400}, {75, 400}
     };
 
     public static int[] playerDimensions = {100,250};
 
-    public static int boundaryForMiss = 500;
+    public static int[] playerPosition = {100, 425};
+
+    public static int boundaryForMiss = 550;
 
     public static int pitcherX = windowWidth/2, pitcherY = 20;
 
     public static int startingLives = 3;
     public static int pointsPerHit = 500;
 
-    public static int startingDelayBetweenShots = 180;
+    public static int startingDelayBetweenShots = 130;
 
     public static int ballRadius = 20;
 

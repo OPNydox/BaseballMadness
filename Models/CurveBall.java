@@ -5,24 +5,30 @@ import Utils.Constants;
 import java.util.Random;
 
 /**
- * Created by User on 1.7.2016 ã..
+ * Created by User on 1.7.2016 ï¿½..
  */
 public class CurveBall extends AbstractBall{
 
-    private int a;
+    private double a;
     private double b;
     private double c;
 
     public CurveBall(int ballX, int ballY, int ballRadius, int ballSpeed, String ballSpritePath) {
         super(ballX, ballY, ballRadius, ballSpeed, ballSpritePath);
-        findEquasion();
+        a = -13/5600.0;
+        b = 1287/1120.0;
+        c = 0;
     }
 
     @Override
     public void move() {
+
         setBallY(getY() + getBallSpeed());
-        setBallX((int) (Constants.windowWidth/2*(2/3) - Math.sqrt(Math.sqrt(Constants.windowWidth/2*(2/3)) -
-                Math.sqrt(Constants.windowHeight)) - getX()));
+        //setBallX((int) (Constants.windowWidth/2*3 - Math.sqrt(Math.sqrt(Constants.windowWidth/2*(2/3))) +
+                //Math.sqrt(Constants.windowHeight)) + getY());d
+
+        setBallX((int)(a*getY()*getY() + b*getY() + c) + Constants.windowWidth/2);
+        super.move();
     }
 
     private void findEquasion(){
